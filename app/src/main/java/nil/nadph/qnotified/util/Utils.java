@@ -58,7 +58,6 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import me.singleneuron.qn_kernel.data.HostInformationProviderKt;
-import me.singleneuron.util.QQVersion;
 import mqq.app.AppRuntime;
 import nil.nadph.qnotified.BuildConfig;
 
@@ -182,9 +181,7 @@ public class Utils {
         try {
             AppRuntime rt = getAppRuntime();
             if (rt == null) {
-                if (BuildConfig.DEBUG) {
-                    logw("getLongAccountUin/E getAppRuntime == null");
-                }
+                // getLongAccountUin/E getAppRuntime == null
                 return -1;
             }
             return (long) invoke_virtual(rt, "getLongAccountUin");
@@ -231,7 +228,7 @@ public class Utils {
     @MainProcess
     public static AppRuntime getAppRuntime() {
         if (!sAppRuntimeInit) {
-            logw("getAppRuntime/W invoked before NewRuntime.step");
+            // getAppRuntime/W invoked before NewRuntime.step
             return null;
         }
         Object baseApplicationImpl = HostInformationProviderKt.getHostInfo().getApplication();
@@ -358,13 +355,7 @@ public class Utils {
 
     public static void logd(String str) {
         if (BuildConfig.DEBUG) {
-            try {
-                Log.d("QNdump", str);
-                XposedBridge.log(str);
-            } catch (NoClassDefFoundError e) {
-                Log.d("Xposed", str);
-                Log.d("EdXposed-Bridge", str);
-            }
+            Log.d("QNdump", str);
         }
         if (ENABLE_DUMP_LOG) {
             String path =

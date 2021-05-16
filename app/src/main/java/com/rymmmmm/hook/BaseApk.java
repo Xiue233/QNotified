@@ -21,7 +21,7 @@
  */
 package com.rymmmmm.hook;
 
-import static me.singleneuron.util.QQVersion.QQ_8_6_0;
+import static nil.nadph.qnotified.util.QQVersion.QQ_8_6_0;
 import static nil.nadph.qnotified.util.Utils.log;
 
 import android.content.pm.ApplicationInfo;
@@ -63,7 +63,6 @@ public class BaseApk extends CommonDelayableHook {
                         try {
                             String fileName = (String) param.getResult();
                             String localFile = (String) param.args[0];
-                            Utils.logd("LocalFile=" + localFile + ",FileName=" + fileName);
                             if (fileName.equals("base.apk")) {
                                 PackageManager packageManager = HostInformationProviderKt
                                     .getHostInfo().getApplication().getPackageManager();
@@ -97,7 +96,7 @@ public class BaseApk extends CommonDelayableHook {
             final Class<?> _ItemManagerClz = Initiator
                 .load("com.tencent.mobileqq.troop.utils.TroopFileTransferManager$Item");
             for (Method m : Initiator._TroopFileUploadMgr().getDeclaredMethods()) {
-                if (m.getName().equals("b") && !Modifier.isStatic(m.getModifiers()) && m
+                if (Modifier.isPrivate(m.getModifiers()) && !Modifier.isStatic(m.getModifiers()) && m
                     .getReturnType().equals(int.class)) {
                     Class<?>[] argt = m.getParameterTypes();
                     if (argt.length == 3 && argt[0] == long.class && argt[1] == _ItemManagerClz

@@ -25,10 +25,10 @@ import cc.ioctl.hook.ReplyNoAtHook
 import cc.ioctl.hook.VasProfileAntiCrash
 import ltd.nextalone.hook.HideProfileBubble
 import ltd.nextalone.hook.HideTotalNumber
-import me.ketal.util.PlayQQVersion.PlayQQ_8_2_9
-import me.ketal.util.PlayQQVersion.PlayQQ_8_2_9_1
-import me.ketal.util.PlayQQVersion.PlayQQ_8_2_10
-import me.ketal.util.PlayQQVersion.PlayQQ_8_2_11
+import nil.nadph.qnotified.util.PlayQQVersion.PlayQQ_8_2_9
+import nil.nadph.qnotified.util.PlayQQVersion.PlayQQ_8_2_9_1
+import nil.nadph.qnotified.util.PlayQQVersion.PlayQQ_8_2_10
+import nil.nadph.qnotified.util.PlayQQVersion.PlayQQ_8_2_11
 import me.kyuubiran.hook.AutoMosaicName
 
 class PlayQQConfigTable : ConfigTableInterface {
@@ -47,16 +47,6 @@ class PlayQQConfigTable : ConfigTableInterface {
     override val rangingConfigs: Map<String?, Map<Long, Any>> = mapOf(
         ReplyNoAtHook::class.java.simpleName to mapOf(
             PlayQQ_8_2_9 to "m",
-        ),
-
-        // 字符串关键字 updateProfileBubbleMsgView
-        HideProfileBubble::class.simpleName to mapOf(
-            PlayQQ_8_2_9 to "U",
-        ),
-
-        //com.tencent.mobileqq.activity.aio.core.TroopChatPie中一般是包含R.id.blz的
-        HideTotalNumber::class.java.simpleName to mapOf(
-            PlayQQ_8_2_9 to "bE",
         ),
 
         AutoMosaicName::class.java.simpleName to mapOf(

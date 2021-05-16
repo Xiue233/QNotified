@@ -22,8 +22,11 @@
 package cc.ioctl;
 
 import android.app.Application;
+
 import androidx.annotation.NonNull;
+
 import me.singleneuron.qn_kernel.data.HostInformationProviderKt;
+import nil.nadph.qnotified.util.Utils;
 
 /**
  * Helper class for getting host information. Keep it as simple as possible.
@@ -63,11 +66,19 @@ public class H {
     }
 
     public static boolean isTIM() {
-        return HostInformationProviderKt.getHostInfo().isTim();
+        return HostInformationProviderKt.isTim();
+    }
+
+    public static boolean isQQLite() {
+        return Utils.PACKAGE_NAME_QQ_LITE.equals(getPackageName());
+    }
+
+    public static boolean isPlayQQ() {
+        return !HostInformationProviderKt.isPlayQQ();
     }
 
     public static boolean isQQ() {
         //Improve this method when supporting more clients.
-        return !HostInformationProviderKt.getHostInfo().isTim();
+        return !HostInformationProviderKt.isTim();
     }
 }
